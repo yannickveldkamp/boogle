@@ -1,2 +1,2 @@
 # boogle
-a search engine for beers
+Boogle searches for every delicious beer in eindhoven
