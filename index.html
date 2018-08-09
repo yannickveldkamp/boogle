@@ -4,6 +4,27 @@
 <head>
     <link rel="stylesheet" href="css/bootstrap.css">
     <script src="js/bootstrap.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('input[type="text"]').on("keyup input", function(){
+            /* Get input value on change */
+            var inputVal = $(this).val();
+            var resultDropdown = $(".result");
+            if(inputVal.length){
+                $.get("backend-search.php", {term: inputVal}).done(function(data){
+                    // Display the returned data in browser
+                    resultDropdown.html(data);
+                });
+            } else{
+                resultDropdown.empty();
+            }
+        });
+        
+        // Set search input value on click of result item
+    });
+    </script>
 </head>
 
 <body>
@@ -18,8 +39,9 @@
         <form class="form-inline justify-content-center" style="margin-top: 20%">
             <h1 class="text-center" style="letter-spacing: 5px;"><span class="text-primary">B</span><span class="text-danger">o</span><span class="text-warning">o</span><span class="text-primary">g</span><span class="text-success">l</span><span class="text-warning">e</span></h1>
             <div class="form-group col-md-12 justify-content-center">
-                <input type="password" class="form-control form-control-lg" id="inputPassword2" placeholder="Search for any beer.." style="width: 50%">
+                <input type="text" class="form-control form-control-lg" id="" placeholder="Search for any beer.." style="width: 50%">
             </div>
+            <div class="result"></div>
         </form>
     </div>
     <!-- container -->
