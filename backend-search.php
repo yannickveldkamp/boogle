@@ -1,47 +1,56 @@
 <?php
-/* Attempt MySQL server connection. Assuming you are running MySQL
-server with default setting (user 'root' with no password) */
-$link = mysqli_connect("localhost", "root", "root", "Boogle");
- 
-// Check connection
-if($link === false){
-    die("ERROR: Could not connect. " . mysqli_connect_error());
-}
- 
-if(isset($_REQUEST['term'])){
-    // Prepare a select statement
-    $sql = "SELECT * FROM bier WHERE naam LIKE ?";
-    
-    if($stmt = mysqli_prepare($link, $sql)){
-        // Bind variables to the prepared statement as parameters
-        mysqli_stmt_bind_param($stmt, "s", $param_term);
-        
-        // Set parameters
-        $param_term = $_REQUEST['term'] . '%';
-        
-        // Attempt to execute the prepared statement
-        if(mysqli_stmt_execute($stmt)){
-            $result = mysqli_stmt_get_result($stmt);
-            
-            // Check number of rows in the result set
-            if(mysqli_num_rows($result) > 0){
-                // Fetch result rows as an associative array
-                while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                    echo "<p>" . $row["naam"] . " " . $row["percentage"] . "</p>";
-                    echo "<hr>";
-                }
-            } else{
-                echo "<p>No matches found</p>";
-            }
-        } else{
-            echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
-        }
-    }
-     
-    // Close statement
-    mysqli_stmt_close($stmt);
-}
- 
-// close connection
-mysqli_close($link);
+    include("connection.php");
+?>
+<?php
+// beer search style 
+if (isset($_POST['style__beer'])) {
+    $styleName = $_POST['style__beer'];
+    $Query = "SELECT * FROM style WHERE name LIKE '%$styleName%' LIMIT 10";
+    $ExecQuery = MySQLi_query($link, $Query);
+    echo '<ul>';
+        while ($result = MySQLi_fetch_array($ExecQuery)){
+    ?>
+    <li class='tag' onclick='fill("<?php echo $result['name']; ?>")'>
+    <a> <?php echo $result['name']; ?>
+   </li></a>
+   <?php
+    }}
+    echo '</ul>';
+// beer search style 
+?>
+
+<?php
+// country search style 
+if (isset($_POST['countryName'])) {
+    $add__country = $_POST['countryName'];
+    $Query = "SELECT * FROM countries WHERE name LIKE '%$add__country%' LIMIT 10";
+    $ExecQuery = MySQLi_query($link, $Query);
+    echo '<ul>';
+        while ($result = MySQLi_fetch_array($ExecQuery)){
+    ?>
+    <li class='tag' onclick='fillCountry("<?php echo $result['name']; ?>")'>
+    <a> <?php echo $result['name']; ?>
+   </li></a>
+   <?php
+    }}
+    echo '</ul>';
+// country search style 
+?>
+
+<?php
+// brewery search style 
+if (isset($_POST['breweryName'])) {
+    $add__brewery = $_POST['breweryName'];
+    $Query = "SELECT * FROM breweries WHERE name LIKE '%$add__brewery%' LIMIT 10";
+    $ExecQuery = MySQLi_query($link, $Query);
+    echo '<ul>';
+        while ($result = MySQLi_fetch_array($ExecQuery)){
+    ?>
+    <li class='tag' onclick='fillBrewery("<?php echo $result['name']; ?>")'>
+    <a> <?php echo $result['name']; ?>
+   </li></a>
+   <?php
+    }}
+    echo '</ul>';
+// brewery search style 
 ?>
