@@ -1,31 +1,29 @@
-// find beer styles directly in database 
-$(document).ready(function(){
-    $('#style__beer').on("keyup input", function(){
-        /* Get input value on change */
-        var inputVal = $(this).val();
-        var resultDropdown = $(".result__style__beer");
-        $(".result__style__beer").show();
-        if(inputVal.length){
-            $.get("../backend-search.php", {add_beer: inputVal}).done(function(data){
-                // Display the returned data in browser
-                resultDropdown.html(data);
+function fill(Value) {
+    $('#style__beer').val(Value);
+    $('.result__style__beer').hide();
+}
+$(document).ready(function () {
+    $("#style__beer").keyup(function () {
+
+        var styleName = $('#style__beer').val();
+
+        if (styleName == "") {
+            $(".result__style__beer").html("");
+        }
+
+        else {
+
+            $.ajax({
+
+                type: "POST",
+                url: "../backend-search.php",
+                data: {
+                    style__beer: styleName
+                },
+                success: function (html) {
+                    $(".result__style__beer").html(html).show();
+                }
             });
-        } else{
-            resultDropdown.empty();
         }
     });
-    $("#style__beer").focusout(function() {
-        $(".result__style__beer > p").each(function() {
-            var name = $(this).text();
-            $(this).addClass("tag");
-            $(this).wrap("<a href='"+name+"'>");
-            $(this).click(function(e) {
-                $("#style__beer").attr("placeholder", name);
-                $("#style__beer").val(name);
-                e.preventDefault();
-                $(".result__style__beer").hide();
-            });
-        });
-    });
-    // Set search input value on click of result item
 });

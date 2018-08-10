@@ -18,6 +18,7 @@
   margin: 0 10px 10px 0;
   text-decoration: none;
   -webkit-transition: color 0.2s;
+  cursor: pointer;
 }
 
 .tag::before {
@@ -46,6 +47,7 @@
 .tag:hover {
   background-color: crimson;
   color: white;
+  cursor: pointer;
 }
 
 .tag:hover::after {

@@ -58,7 +58,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Style of the beer</label>
-                    <input type="text" class="form-control" id="style__beer" placeholder="for example IPA">
+                    <input type="text" class="form-control" id="style__beer" name="style__beer" placeholder="for example IPA">
                     <div class="result__style__beer"></div>
                 </div>
                 <div class="form-group">
