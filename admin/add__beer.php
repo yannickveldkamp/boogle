@@ -7,6 +7,7 @@
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="styles__beer.js" type="text/javascript"></script>
+    <script src="countries.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -66,7 +67,8 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Country</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="for example Van Netherlands">
+                    <input type="text" class="form-control" id="add__country" placeholder="for example Netherlands">
+                    <div class="result__countries"></div>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Price of the beer</label>
