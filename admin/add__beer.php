@@ -6,6 +6,7 @@
     <script src="../js/bootstrap.js"></script>
 
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="styles__beer.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -49,32 +50,34 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Latest Beer added</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>       
-            </div>
-            <div class="col-sm">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Latest Brewery added</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>       
-            </div>
-            <div class="col-sm">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Latest bar added</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>       
-            </div>            
+            <form>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Name of the beer</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="for example bavaria">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Style of the beer</label>
+                    <input type="text" class="form-control" id="style__beer" placeholder="for example IPA">
+                    <div class="result__style__beer"></div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Name of the Brewery</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="for example Van moll">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Country</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="for example Van Netherlands">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Price of the beer</label>
+                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Add beer to collection</button>
+            </form>  
         </div>
     </div>
     <!-- container -->
