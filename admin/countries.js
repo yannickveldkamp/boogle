@@ -1,31 +1,29 @@
-// find beer styles directly in database 
-$(document).ready(function(){
-    $('#add__country').on("keyup input", function(){
-        /* Get input value on change */
-        var inputVal = $(this).val();
-        var resultDropdown = $(".result__countries");
-        $(".result__countries").show();
-        if(inputVal.length){
-            $.get("../backend-search.php", {add_country: inputVal}).done(function(data){
-                // Display the returned data in browser
-                resultDropdown.html(data);
+function fillCountry(Value) {
+    $('#add__country').val(Value);
+    $('.result__countries').hide();
+}
+$(document).ready(function () {
+    $("#add__country").keyup(function () {
+
+        var countryName = $('#add__country').val();
+
+        if (countryName == "") {
+            $(".result__countries").html("");
+        }
+
+        else {
+
+            $.ajax({
+
+                type: "POST",
+                url: "../backend-search.php",
+                data: {
+                    countryName: countryName
+                },
+                success: function (html) {
+                    $(".result__countries").html(html).show();
+                }
             });
-        } else{
-            resultDropdown.empty();
         }
     });
-    $("#add__country").focusout(function() {
-        $(".result__countries > p").each(function() {
-            var name = $(this).text();
-            $(this).addClass("tag");
-            $(this).wrap("<a href='"+name+"'>");
-            $(this).click(function(e) {
-                $("#add__country").attr("placeholder", name);
-                $("#add__country").val(name);
-                e.preventDefault();
-                $(".result__countries").hide();
-            });
-        });
-    });
-    // Set search input value on click of result item
 });

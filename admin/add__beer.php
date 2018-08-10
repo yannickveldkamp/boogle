@@ -67,7 +67,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Country</label>
-                    <input type="text" class="form-control" id="add__country" placeholder="for example Netherlands">
+                    <input type="text" class="form-control" id="add__country" name="add__country" placeholder="for example Netherlands">
                     <div class="result__countries"></div>
                 </div>
                 <div class="form-group">

@@ -22,3 +22,21 @@ if (isset($_POST['style__beer'])) {
     echo '</ul>';
 // beer search style 
 ?>
+
+<?php
+// country search style 
+if (isset($_POST['countryName'])) {
+    $add__country = $_POST['countryName'];
+    $Query = "SELECT * FROM countries WHERE name LIKE '%$add__country%' LIMIT 10";
+    $ExecQuery = MySQLi_query($link, $Query);
+    echo '<ul>';
+        while ($result = MySQLi_fetch_array($ExecQuery)){
+    ?>
+    <li class='tag' onclick='fillCountry("<?php echo $result['name']; ?>")'>
+    <a> <?php echo $result['name']; ?>
+   </li></a>
+   <?php
+    }}
+    echo '</ul>';
+// country search style 
+?>
