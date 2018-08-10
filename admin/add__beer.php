@@ -52,7 +52,9 @@
     <div class="container">
         <div class="row">
             <div class="col-sm">
-            <form>
+                <h2>Add beer </h2>
+                <hr>
+            <form method="post" action="backend-add.php">
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Name of the beer</label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="for example bavaria">
