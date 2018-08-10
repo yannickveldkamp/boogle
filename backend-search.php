@@ -10,7 +10,7 @@ if($link === false){
  
 if(isset($_REQUEST['term'])){
     // Prepare a select statement
-    $sql = "SELECT * FROM beers WHERE name LIKE ?";
+    $sql = "SELECT * FROM bier WHERE naam LIKE ?";
     
     if($stmt = mysqli_prepare($link, $sql)){
         // Bind variables to the prepared statement as parameters
@@ -27,8 +27,7 @@ if(isset($_REQUEST['term'])){
             if(mysqli_num_rows($result) > 0){
                 // Fetch result rows as an associative array
                 while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                    echo "<p>" . $row["name"] . " " . $row["abv"] . "</p>";
-                    echo "<p>" . $row["descript"] . " </p>";
+                    echo "<p>" . $row["naam"] . " " . $row["percentage"] . "</p>";
                     echo "<hr>";
                 }
             } else{
