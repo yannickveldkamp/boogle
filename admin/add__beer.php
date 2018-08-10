@@ -8,6 +8,7 @@
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="styles__beer.js" type="text/javascript"></script>
     <script src="countries.js" type="text/javascript"></script>
+    <script src="brewery.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -63,7 +64,8 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Name of the Brewery</label>
-                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="for example Van moll">
+                    <input type="text" class="form-control" id="add__brewery" name="add__brewery"  placeholder="for example Van moll">
+                    <div class="result__brewery"></div>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Country</label>
@@ -72,7 +74,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Price of the beer</label>
-                    <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="">
+                    <input type="number" class="form-control" id="add__price" name="add__price" placeholder="">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Description</label>

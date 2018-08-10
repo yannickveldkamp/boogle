@@ -40,3 +40,21 @@ if (isset($_POST['countryName'])) {
     echo '</ul>';
 // country search style 
 ?>
+
+<?php
+// brewery search style 
+if (isset($_POST['breweryName'])) {
+    $add__brewery = $_POST['breweryName'];
+    $Query = "SELECT * FROM breweries WHERE name LIKE '%$add__brewery%' LIMIT 10";
+    $ExecQuery = MySQLi_query($link, $Query);
+    echo '<ul>';
+        while ($result = MySQLi_fetch_array($ExecQuery)){
+    ?>
+    <li class='tag' onclick='fillBrewery("<?php echo $result['name']; ?>")'>
+    <a> <?php echo $result['name']; ?>
+   </li></a>
+   <?php
+    }}
+    echo '</ul>';
+// brewery search style 
+?>
